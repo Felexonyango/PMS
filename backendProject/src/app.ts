@@ -24,6 +24,7 @@ import { DefaultRoles } from "./data/DefaultRoles";
 
 import { connectDb } from "./utils/connects";
 import { destroyData } from "./seeder";
+import { setupSwagger } from "../swagger";
 const app: Application = express();
 app.use(express.json());
 
@@ -88,7 +89,7 @@ app.use("/api/file", upload.single("file"), FileRoutes);
 //updated body-parser for ts node
 
 app.use('/uploads', express.static(path.resolve('uploads')));
-
+setupSwagger(app);
 app.use(express.json());
 startServer();
 
